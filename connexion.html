@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Créez votre compte Babil.">
+  <meta name="theme-color" content="#4f7cff">
+  <title>Inscription — Babil</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<!--
+  inscription.html — Page d'inscription (création d'un compte).
+-->
+<body class="site-page">
+
+  <!-- En-tête commun à toutes les pages publiques -->
+  <header class="site-header">
+    <a href="index.html" class="brand"><img src="assets/favicon.svg" alt="" width="32" height="32"> Babil</a>
+    <button type="button" class="icon-btn nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">☰</button>
+    <nav id="site-nav" class="site-nav" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="aide.html">Aide</a>
+      <a href="chat.html">Messagerie</a>
+      <a href="profil.html">Mon profil</a>
+      <a href="connexion.html" class="btn btn-ghost">Connexion</a>
+      <a href="inscription.html" class="btn btn-primary" aria-current="page">Inscription</a>
+    </nav>
+  </header>
+
+  <main class="auth-main">
+    <section class="auth-card">
+      <header class="auth-header">
+        <img src="assets/favicon.svg" alt="" class="auth-logo" width="56" height="56">
+        <h1>Créer un compte</h1>
+        <p class="muted">Rejoignez Babil en moins d'une minute.</p>
+      </header>
+
+      <form id="signup-form" novalidate>
+        <label class="field">
+          <span>Pseudo <small class="muted">(3 à 20 caractères : lettres, chiffres, _)</small></span>
+          <input type="text" name="username" autocomplete="nickname" required maxlength="20" pattern="[A-Za-z0-9_]{3,20}">
+        </label>
+        <label class="field">
+          <span>Adresse courriel</span>
+          <input type="email" name="email" autocomplete="email" required>
+        </label>
+        <label class="field">
+          <span>Mot de passe <small class="muted">(6 caractères minimum)</small></span>
+          <span class="password-field">
+            <input type="password" name="password" autocomplete="new-password" required minlength="6">
+            <button type="button" class="password-toggle" aria-label="Afficher le mot de passe">👁</button>
+          </span>
+        </label>
+        <label class="field">
+          <span>Confirmer le mot de passe</span>
+          <input type="password" name="confirm" autocomplete="new-password" required minlength="6">
+        </label>
+        <fieldset class="field">
+          <legend>Couleur de l'avatar</legend>
+          <div class="colors">
+            <label><input type="radio" name="color" value="#4f7cff" checked aria-label="Couleur #4f7cff"><span style="background:#4f7cff"></span></label>
+            <label><input type="radio" name="color" value="#e5534b" aria-label="Couleur #e5534b"><span style="background:#e5534b"></span></label>
+            <label><input type="radio" name="color" value="#2da44e" aria-label="Couleur #2da44e"><span style="background:#2da44e"></span></label>
+            <label><input type="radio" name="color" value="#d4a72c" aria-label="Couleur #d4a72c"><span style="background:#d4a72c"></span></label>
+            <label><input type="radio" name="color" value="#8250df" aria-label="Couleur #8250df"><span style="background:#8250df"></span></label>
+            <label><input type="radio" name="color" value="#e85aad" aria-label="Couleur #e85aad"><span style="background:#e85aad"></span></label>
+            <label><input type="radio" name="color" value="#0e8a9e" aria-label="Couleur #0e8a9e"><span style="background:#0e8a9e"></span></label>
+            <label><input type="radio" name="color" value="#6e7781" aria-label="Couleur #6e7781"><span style="background:#6e7781"></span></label>
+          </div>
+        </fieldset>
+        <p class="form-message" aria-live="polite"></p>
+        <button type="submit" class="btn btn-primary btn-block">Créer mon compte</button>
+      </form>
+
+      <p class="auth-switch muted">Déjà inscrit ? <a href="connexion.html">Se connecter</a></p>
+    </section>
+  </main>
+
+  <!-- Pied de page commun -->
+  <footer class="site-footer">
+    <nav aria-label="Liens du pied de page">
+      <a href="index.html">Accueil</a>
+      <a href="aide.html">Aide</a>
+      <a href="connexion.html">Connexion</a>
+      <a href="inscription.html">Inscription</a>
+    </nav>
+    <p>© <span data-year></span> Babil — Projet Fil-Rouge 8WEB101 — UQAC</p>
+  </footer>
+
+</body>
+</html>
