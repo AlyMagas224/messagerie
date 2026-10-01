@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Gérez votre profil Babil.">
+  <meta name="theme-color" content="#4f7cff">
+  <title>Mon profil — Babil</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<!--
+  profil.html — Page de profil de l'utilisateur connecté.
+-->
+<body class="site-page">
+
+  <!-- En-tête commun à toutes les pages publiques -->
+  <header class="site-header">
+    <a href="index.html" class="brand"><img src="assets/favicon.svg" alt="" width="32" height="32"> Babil</a>
+    <button type="button" class="icon-btn nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">☰</button>
+    <nav id="site-nav" class="site-nav" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="aide.html">Aide</a>
+      <a href="chat.html">Messagerie</a>
+      <a href="profil.html" aria-current="page">Mon profil</a>
+      <a href="connexion.html" class="btn btn-ghost">Connexion</a>
+      <a href="inscription.html" class="btn btn-primary">Inscription</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <header class="page-header">
+      <h1>Mon profil</h1>
+      <p class="muted">Modifiez votre pseudo, votre avatar et votre mot de passe.</p>
+    </header>
+
+    <div class="profile-grid">
+      <!-- Résumé -->
+      <section class="card is-wide profile-summary" aria-label="Résumé du profil">
+        <span id="profile-avatar"></span>
+        <div>
+          <h2 id="profile-name">Chargement…</h2>
+          <p id="profile-email" class="muted"></p>
+        </div>
+        <div class="stats">
+          <p><strong id="stat-rooms">–</strong><span class="muted">salons</span></p>
+          <p><strong id="stat-contacts">–</strong><span class="muted">contacts</span></p>
+        </div>
+      </section>
+
+      <!-- Pseudo et couleur -->
+      <section class="card">
+        <h2>Informations</h2>
+        <form id="profile-form" novalidate>
+          <label class="field">
+            <span>Pseudo</span>
+            <input type="text" name="username" required maxlength="20" pattern="[A-Za-z0-9_]{3,20}">
+          </label>
+          <fieldset class="field">
+            <legend>Couleur de l'avatar</legend>
+            <div class="colors">
+            <label><input type="radio" name="color" value="#4f7cff" checked aria-label="Couleur #4f7cff"><span style="background:#4f7cff"></span></label>
+            <label><input type="radio" name="color" value="#e5534b" aria-label="Couleur #e5534b"><span style="background:#e5534b"></span></label>
+            <label><input type="radio" name="color" value="#2da44e" aria-label="Couleur #2da44e"><span style="background:#2da44e"></span></label>
+            <label><input type="radio" name="color" value="#d4a72c" aria-label="Couleur #d4a72c"><span style="background:#d4a72c"></span></label>
+            <label><input type="radio" name="color" value="#8250df" aria-label="Couleur #8250df"><span style="background:#8250df"></span></label>
+            <label><input type="radio" name="color" value="#e85aad" aria-label="Couleur #e85aad"><span style="background:#e85aad"></span></label>
+            <label><input type="radio" name="color" value="#0e8a9e" aria-label="Couleur #0e8a9e"><span style="background:#0e8a9e"></span></label>
+            <label><input type="radio" name="color" value="#6e7781" aria-label="Couleur #6e7781"><span style="background:#6e7781"></span></label>
+            </div>
+          </fieldset>
+          <p class="form-message" aria-live="polite"></p>
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </form>
+      </section>
+
+      <!-- Mot de passe -->
+      <section class="card">
+        <h2>Mot de passe</h2>
+        <form id="password-form" novalidate>
+          <label class="field">
+            <span>Nouveau mot de passe</span>
+            <span class="password-field">
+              <input type="password" name="password" autocomplete="new-password" required minlength="6">
+              <button type="button" class="password-toggle" aria-label="Afficher le mot de passe">👁</button>
+            </span>
+          </label>
+          <label class="field">
+            <span>Confirmer</span>
+            <input type="password" name="confirm" autocomplete="new-password" required minlength="6">
+          </label>
+          <p class="form-message" aria-live="polite"></p>
+          <button type="submit" class="btn btn-primary">Changer le mot de passe</button>
+        </form>
+      </section>
+
+      <!-- Actions -->
+      <section class="card is-wide">
+        <h2>Session</h2>
+        <div class="card-actions">
+          <a href="chat.html" class="btn btn-primary">Retour à la messagerie</a>
+          <button type="button" id="btn-logout" class="btn btn-ghost">Se déconnecter</button>
+          <button type="button" id="btn-reset-demo" class="btn btn-danger" hidden>Effacer les données du mode démo</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Pied de page commun -->
+  <footer class="site-footer">
+    <nav aria-label="Liens du pied de page">
+      <a href="index.html">Accueil</a>
+      <a href="aide.html">Aide</a>
+      <a href="connexion.html">Connexion</a>
+      <a href="inscription.html">Inscription</a>
+    </nav>
+    <p>© <span data-year></span> Babil — Projet Fil-Rouge 8WEB101 — UQAC</p>
+  </footer>
+
+</body>
+</html>
