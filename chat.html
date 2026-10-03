@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#4f7cff">
+  <title>Babil</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/chat.css">
+</head>
+<body>
+
+  <!-- Écran de chargement, masqué quand l'application est prête -->
+  <div id="loader" class="loader" aria-live="polite">
+    <span class="spinner" aria-hidden="true"></span>
+    <p>Connexion…</p>
+  </div>
+
+  <div id="app" class="app" hidden>
+
+    <!-- ============================ BARRE LATÉRALE ============================ -->
+    <aside class="sidebar" aria-label="Navigation">
+      <header class="sidebar-header">
+        <a href="profil.html" class="me" title="Mon profil">
+          <span id="me-avatar"></span>
+          <div>
+            <strong id="me-name"></strong>
+            <small class="muted">Mon profil</small>
+          </div>
+        </a>
+        <div class="sidebar-actions">
+          <a href="index.html" class="icon-btn" title="Accueil" aria-label="Accueil">🏠</a>
+          <button type="button" id="btn-sound" class="icon-btn" title="Son des notifications" aria-pressed="true">🔔</button>
+          <button type="button" id="btn-logout" class="icon-btn" title="Se déconnecter" aria-label="Se déconnecter">🚪</button>
+        </div>
+      </header>
+
+      <nav class="tabs" role="tablist">
+        <button type="button" class="tab is-active" role="tab" data-tab="rooms" aria-selected="true">
+          Salons <span id="total-unread" class="badge" hidden></span>
+        </button>
+        <button type="button" class="tab" role="tab" data-tab="contacts" aria-selected="false">Contacts</button>
+      </nav>
+
+      <!-- Panneau : liste des salons -->
+      <section id="panel-rooms" class="panel" role="tabpanel">
+        <!-- Démarrer une conversation privée directement avec un pseudo -->
+        <form id="start-chat-form" class="inline-form">
+          <input type="text" name="username" placeholder="Écrire à… (pseudo)" aria-label="Pseudo de la personne"
+                 required autocomplete="off" maxlength="20">
+          <button type="submit" class="btn btn-primary">Écrire</button>
+        </form>
+        <button type="button" id="btn-new-room" class="btn btn-ghost btn-block">＋ Nouveau salon de groupe</button>
+        <ul id="room-list" class="list" aria-label="Salons de conversation"></ul>
+        <p id="rooms-empty" class="empty muted" hidden>
+          Aucune conversation. Saisissez le pseudo d'une personne inscrite ci-dessus pour lui écrire.
+        </p>
+      </section>
+
+      <!-- Panneau : liste des contacts -->
+      <section id="panel-contacts" class="panel" role="tabpanel" hidden>
+        <form id="add-contact-form" class="inline-form">
+          <input type="text" name="username" placeholder="Pseudo à ajouter" aria-label="Pseudo à ajouter"
+                 required autocomplete="off" maxlength="20">
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+        <ul id="contact-list" class="list" aria-label="Contacts"></ul>
+        <p id="contacts-empty" class="empty muted" hidden>
+          Aucun contact. Ajoutez quelqu'un grâce à son pseudo.
+        </p>
+      </section>
+    </aside>
+
+    <!-- ============================ ZONE DE CONVERSATION ============================ -->
+    <main class="chat" aria-label="Conversation">
+
+      <!-- Affiché quand aucun salon n'est ouvert -->
+      <div id="chat-placeholder" class="chat-placeholder">
+        <img src="assets/favicon.svg" alt="" width="72" height="72">
+        <h2>Bienvenue sur Babil</h2>
+        <p class="muted">Sélectionnez un salon ou un contact pour commencer à discuter.</p>
+      </div>
+
+      <div id="chat-view" class="chat-view" hidden>
+        <header class="chat-header">
+          <button type="button" id="btn-back" class="icon-btn only-mobile" title="Retour">←</button>
+          <span id="room-avatar"></span>
+          <div class="chat-title">
+            <h2 id="room-name"></h2>
+            <small id="room-status" class="muted"></small>
+          </div>
+          <button type="button" id="btn-members" class="icon-btn" title="Membres du salon">👥</button>
+        </header>
+
+        <!-- Liste des messages (role="log" : annoncée par les lecteurs d'écran) -->
+        <div id="messages" class="messages" role="log" aria-live="polite">
+          <button type="button" id="btn-load-more" class="btn btn-ghost load-more" hidden>Charger les messages précédents</button>
+          <ol id="message-list" class="message-list"></ol>
+        </div>
+
+        <button type="button" id="btn-scroll-down" class="scroll-down" hidden title="Aller aux derniers messages">↓</button>
+
+        <p id="typing" class="typing muted" aria-live="polite"></p>
+
+        <form id="composer" class="composer">
+          <label class="icon-btn" title="Envoyer une image">
+            📎
+            <input type="file" id="image-input" accept="image/png,image/jpeg,image/gif,image/webp" hidden>
+          </label>
+          <textarea id="message-input" rows="1" maxlength="2000" placeholder="Écrire un message…"
+                    aria-label="Message" autocomplete="off"></textarea>
+          <button type="submit" id="btn-send" class="btn btn-primary" title="Envoyer (Entrée)">Envoyer</button>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <!-- ============================ BOÎTES DE DIALOGUE ============================ -->
+
+  <!-- Création d'un salon de groupe -->
+  <dialog id="dialog-new-room" class="dialog">
+    <form method="dialog" id="new-room-form">
+      <h2>Nouveau salon</h2>
+      <label class="field">
+        <span>Nom du salon</span>
+        <input type="text" name="name" required maxlength="50" placeholder="ex. Équipe projet">
+      </label>
+      <fieldset class="field">
+        <legend>Membres (parmi vos contacts)</legend>
+        <ul id="new-room-members" class="check-list"></ul>
+      </fieldset>
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-ghost" data-close>Annuler</button>
+        <button type="submit" class="btn btn-primary" value="create">Créer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Membres du salon courant -->
+  <dialog id="dialog-members" class="dialog">
+    <form method="dialog">
+      <h2>Membres</h2>
+      <ul id="member-list" class="list"></ul>
+      <div id="add-member-zone" class="add-member">
+        <label class="field">
+          <span>Ajouter un contact</span>
+          <select id="add-member-select"></select>
+        </label>
+        <button type="button" id="btn-add-member" class="btn btn-primary">Ajouter</button>
+      </div>
+      <div class="dialog-actions">
+        <button type="button" id="btn-leave-room" class="btn btn-danger">Quitter le salon</button>
+        <button type="button" class="btn btn-ghost" data-close>Fermer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Conteneur des notifications éphémères -->
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <script type="module" src="js/chat/main.js"></script>
+</body>
+</html>
