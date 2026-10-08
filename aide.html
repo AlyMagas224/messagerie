@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Guide d'utilisation de la messagerie Babil.">
+  <meta name="theme-color" content="#4f7cff">
+  <title>Aide — Babil</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<!--
+  aide.html — Page d'aide : guide d'utilisation, configuration de Supabase, FAQ et à propos.
+-->
+<body class="site-page">
+
+  <!-- En-tête commun à toutes les pages publiques -->
+  <header class="site-header">
+    <a href="index.html" class="brand"><img src="assets/favicon.svg" alt="" width="32" height="32"> Babil</a>
+    <button type="button" class="icon-btn nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">☰</button>
+    <nav id="site-nav" class="site-nav" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="aide.html" aria-current="page">Aide</a>
+      <a href="chat.html">Messagerie</a>
+      <a href="profil.html">Mon profil</a>
+      <a href="connexion.html" class="btn btn-ghost">Connexion</a>
+      <a href="inscription.html" class="btn btn-primary">Inscription</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <header class="page-header">
+      <h1>Aide</h1>
+      <p class="muted">Tout ce qu'il faut savoir pour utiliser et configurer Babil.</p>
+    </header>
+
+    <div class="content">
+      <nav class="toc" aria-label="Sommaire">
+        <a href="#demarrer">Démarrer</a>
+        <a href="#utiliser">Utiliser la messagerie</a>
+        <a href="#indicateurs">Indicateurs</a>
+        <a href="#supabase">Mode démo et Supabase</a>
+        <a href="#faq">Questions fréquentes</a>
+        <a href="#apropos">À propos</a>
+      </nav>
+
+      <article class="prose">
+        <section id="demarrer">
+          <h2>Démarrer</h2>
+          <ol>
+            <li><a href="inscription.html">Créez un compte</a> : pseudo, courriel, mot de passe et couleur d'avatar.</li>
+            <li>Vous arrivez dans la messagerie. Dans l'onglet <strong>Salons</strong>, tapez le pseudo d'une autre personne inscrite dans le champ <strong>« Écrire à… »</strong> puis cliquez sur <strong>Écrire</strong> : la conversation privée s'ouvre et la personne est ajoutée à vos contacts.</li>
+            <li>Pour discuter à plusieurs, cliquez sur <strong>＋ Nouveau salon de groupe</strong>, donnez un nom et cochez au moins un contact.</li>
+          </ol>
+        </section>
+
+        <section id="utiliser">
+          <h2>Utiliser la messagerie</h2>
+          <ul>
+            <li><strong>Envoyer un message :</strong> touche <code>Entrée</code> ou bouton <em>Envoyer</em> (<code>Maj + Entrée</code> pour aller à la ligne).</li>
+            <li><strong>Envoyer une image :</strong> bouton 📎, copier-coller (<code>Ctrl + V</code>) ou glisser-déposer dans la conversation (PNG, JPEG, GIF, WEBP, 5 Mo maximum).</li>
+            <li><strong>Réagir :</strong> survolez un message (ou touchez-le sur téléphone) puis cliquez sur ☺ et choisissez un emoji. Cliquez à nouveau sur une réaction pour la retirer.</li>
+            <li><strong>Membres d'un salon :</strong> bouton 👥 en haut de la conversation pour voir les membres, en ajouter ou quitter le salon.</li>
+            <li><strong>Notifications :</strong> bouton 🔔 / 🔕 pour activer ou couper le son. Autorisez les notifications du navigateur pour être prévenu quand l'onglet est en arrière-plan.</li>
+            <li><strong>Profil :</strong> page <a href="profil.html">Mon profil</a> pour changer de pseudo, de couleur ou de mot de passe.</li>
+          </ul>
+        </section>
+
+        <section id="indicateurs">
+          <h2>Indicateurs</h2>
+          <table>
+            <thead><tr><th>Indicateur</th><th>Signification</th></tr></thead>
+            <tbody>
+              <tr><td>🟢 pastille verte</td><td>La personne est en ligne. Sinon : « vu à 14 h 05 ».</td></tr>
+              <tr><td><em>… est en train d'écrire…</em></td><td>Quelqu'un tape un message dans le salon ouvert.</td></tr>
+              <tr><td>✓</td><td>Message envoyé et enregistré.</td></tr>
+              <tr><td>✓✓</td><td>Message reçu par tous les destinataires.</td></tr>
+              <tr><td>✓✓ en couleur</td><td>Message lu par tous les destinataires.</td></tr>
+              <tr><td>Pastille bleue (nombre)</td><td>Nombre de messages non lus dans le salon.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="supabase">
+          <h2>Mode démo et Supabase</h2>
+          <p>Babil fonctionne de deux façons, choisies automatiquement selon le fichier <code>js/config.js</code> :</p>
+          <h3>Mode démo (par défaut)</h3>
+          <p>Si <code>js/config.js</code> n'est pas rempli, les comptes et messages sont enregistrés <strong>dans votre navigateur</strong>.
+            Tout fonctionne (inscription, salons, temps réel, images…), mais uniquement entre les onglets de ce navigateur.
+            Pour tester une conversation, ouvrez un <strong>deuxième onglet</strong>, inscrivez-y un autre compte, et discutez d'un onglet à l'autre.</p>
+          <h3>Mode Supabase (messagerie entre plusieurs appareils)</h3>
+          <ol>
+            <li>Créez un projet gratuit sur <a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a>.</li>
+            <li>Dans <strong>SQL Editor</strong>, exécutez tout le fichier <code>supabase/schema.sql</code>.</li>
+            <li>Dans <strong>Authentication → Sign In / Providers → Email</strong>, désactivez <em>Confirm email</em> (pour les tests).</li>
+            <li>Dans <strong>Authentication → URL Configuration</strong>, ajoutez l'adresse du site (GitHub Pages).</li>
+            <li>Dans <strong>Project Settings → API</strong>, copiez l'URL du projet et la clé <em>anon public</em> dans <code>js/config.js</code>.</li>
+          </ol>
+          <p>La note « Mode démo » de la messagerie disparaît alors, et tous les utilisateurs du site partagent la même base de données.</p>
+        </section>
+
+        <section id="faq">
+          <h2>Questions fréquentes</h2>
+          <details>
+            <summary>Mon ami ne voit pas mon compte quand il ajoute mon pseudo.</summary>
+            <p>En mode démo, les comptes n'existent que dans votre navigateur. Configurez Supabase pour que tout le monde partage les mêmes comptes.</p>
+          </details>
+          <details>
+            <summary>« Impossible de joindre le serveur » lors de la connexion.</summary>
+            <p>L'URL ou la clé de <code>js/config.js</code> est incorrecte, ou le projet Supabase est en pause. Vérifiez-les dans Project Settings → API.</p>
+          </details>
+          <details>
+            <summary>L'inscription indique « Confirmez votre adresse ».</summary>
+            <p>La confirmation par courriel est activée dans Supabase. Cliquez sur le lien reçu, ou désactivez <em>Confirm email</em> dans Authentication.</p>
+          </details>
+          <details>
+            <summary>Je n'entends pas le son des notifications.</summary>
+            <p>Le navigateur n'autorise le son qu'après un premier clic dans la page. Vérifiez aussi que le bouton affiche 🔔 et non 🔕.</p>
+          </details>
+          <details>
+            <summary>Le site ne s'affiche pas quand j'ouvre le fichier index.html directement.</summary>
+            <p>Les modules JavaScript exigent un serveur : utilisez l'extension Live Server de VS Code, <code>python -m http.server</code>, ou GitHub Pages.</p>
+          </details>
+        </section>
+
+        <section id="apropos">
+          <h2>À propos</h2>
+          <p>Babil a été réalisé dans le cadre du Projet Fil-Rouge du cours <strong>8WEB101 — Conception et programmation de sites Web</strong> (UQAC).
+            Il est construit en HTML, CSS et JavaScript sans framework, avec Supabase pour les données et GitHub Pages pour l'hébergement.</p>
+          <p>Fonctionnalité supplémentaire choisie par l'équipe : <strong>les réactions emoji</strong> sur les messages.</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <!-- Pied de page commun -->
+  <footer class="site-footer">
+    <nav aria-label="Liens du pied de page">
+      <a href="index.html">Accueil</a>
+      <a href="aide.html">Aide</a>
+      <a href="connexion.html">Connexion</a>
+      <a href="inscription.html">Inscription</a>
+    </nav>
+    <p>© <span data-year></span> Babil — Projet Fil-Rouge 8WEB101 — UQAC</p>
+  </footer>
+</body>
+</html>
