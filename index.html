@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Babil, messagerie instantanée Web : discutez en temps réel avec vos contacts et vos groupes.">
+  <meta name="theme-color" content="#4f7cff">
+  <title>Babil — Messagerie instantanée</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<!--
+  index.html — Page d'accueil : présentation de la messagerie et accès à l'inscription / connexion.
+-->
+<body class="site-page">
+
+  <!-- En-tête commun à toutes les pages publiques -->
+  <header class="site-header">
+    <a href="index.html" class="brand"><img src="assets/favicon.svg" alt="" width="32" height="32"> Babil</a>
+    <button type="button" class="icon-btn nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">☰</button>
+    <nav id="site-nav" class="site-nav" aria-label="Navigation principale">
+      <a href="index.html" aria-current="page">Accueil</a>
+      <a href="aide.html">Aide</a>
+      <a href="chat.html">Messagerie</a>
+      <a href="profil.html">Mon profil</a>
+      <a href="connexion.html" class="btn btn-ghost">Connexion</a>
+      <a href="inscription.html" class="btn btn-primary">Inscription</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Présentation principale -->
+    <section class="container hero">
+      <div>
+        <h1>Discutez en <span>temps réel</span>, simplement.</h1>
+        <p class="muted">Babil est une messagerie instantanée Web : conversations privées, salons de groupe,
+          partage d'images et réactions emoji, sur ordinateur comme sur téléphone.</p>
+        <div class="hero-actions">
+          <a href="inscription.html" class="btn btn-primary" data-auth="guest">Créer un compte gratuit</a>
+          <a href="connexion.html" class="btn btn-ghost" data-auth="guest">J'ai déjà un compte</a>
+          <a href="chat.html" class="btn btn-primary" data-auth="user" hidden>Ouvrir la messagerie</a>
+        </div>
+      </div>
+
+      <!-- Illustration décorative (SVG animé, voir assets/hero-illustration.svg) -->
+      <figure class="hero-art">
+        <img src="assets/hero-illustration.svg" width="600" height="520"
+             alt="Téléphone affichant une conversation, entouré de contacts en ligne, d'une notification et de réactions emoji">
+      </figure>
+    </section>
+
+    <!-- Fonctionnalités -->
+    <section class="section" id="fonctionnalites">
+      <div class="container">
+        <h2 class="section-title">Tout ce qu'il faut pour discuter</h2>
+        <p class="section-lead muted">Les fonctionnalités d'une vraie messagerie, dans un site Web léger.</p>
+        <div class="features">
+          <article class="feature">
+            <div class="feature-icon">⚡</div>
+            <h3>Messages en temps réel</h3>
+            <p class="muted">Les messages apparaissent instantanément, sans recharger la page, avec leur heure d'envoi.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">👥</div>
+            <h3>Contacts et salons</h3>
+            <p class="muted">Ajoutez vos contacts par pseudo, écrivez-leur en privé ou créez des salons de groupe.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">🖼️</div>
+            <h3>Partage d'images</h3>
+            <p class="muted">Envoyez une image avec le trombone, un copier-coller ou un glisser-déposer.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">🟢</div>
+            <h3>Indicateurs</h3>
+            <p class="muted">En ligne / hors ligne, « en train d'écrire… » et accusés envoyé ✓, reçu ✓✓, lu ✓✓.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">🔔</div>
+            <h3>Notifications</h3>
+            <p class="muted">Son, notification du navigateur et compteur de messages non lus dans l'onglet.</p>
+          </article>
+          <article class="feature is-highlight">
+            <div class="feature-icon">😍</div>
+            <h3>Réactions emoji <span class="tag">Exclusif</span></h3>
+            <p class="muted">Réagissez à un message d'un simple clic : 👍 ❤️ 😂 😮 😢 🎉, synchronisé chez tout le monde.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Étapes -->
+    <section class="section" style="background: var(--color-surface-2)">
+      <div class="container">
+        <h2 class="section-title">Comment ça marche ?</h2>
+        <p class="section-lead muted">Trois étapes pour commencer à discuter.</p>
+        <ol class="steps">
+          <li><h3>Créez votre compte</h3><p class="muted">Un pseudo, un courriel, un mot de passe et une couleur d'avatar.</p></li>
+          <li><h3>Ajoutez des contacts</h3><p class="muted">Dans l'onglet Contacts, saisissez le pseudo d'une personne inscrite.</p></li>
+          <li><h3>Discutez</h3><p class="muted">Cliquez sur un contact pour lui écrire ou créez un salon pour votre groupe.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Appel à l'action -->
+    <section class="section">
+      <div class="container cta">
+        <h2>Prêt à discuter ?</h2>
+        <p>L'inscription prend moins d'une minute.</p>
+        <a href="inscription.html" class="btn" data-auth="guest">Commencer maintenant</a>
+        <a href="chat.html" class="btn" data-auth="user" hidden>Ouvrir la messagerie</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pied de page commun -->
+  <footer class="site-footer">
+    <nav aria-label="Liens du pied de page">
+      <a href="index.html">Accueil</a>
+      <a href="aide.html">Aide</a>
+      <a href="connexion.html">Connexion</a>
+      <a href="inscription.html">Inscription</a>
+    </nav>
+    <p>© <span data-year></span> Babil — Projet Fil-Rouge 8WEB101 — UQAC</p>
+  </footer>
+
+
+</body>
+</html>
