@@ -1,0 +1,399 @@
+/* =====================================================================
+   chat.css — Mise en page de la messagerie (chat.html)
+   Ordinateur : barre latérale + conversation côte à côte.
+   Téléphone (< 768px) : un seul panneau visible à la fois.
+   ===================================================================== */
+
+/* ---------- Écran de chargement ---------- */
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 100%;
+  color: var(--color-muted);
+}
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ---------- Grille principale ---------- */
+.app {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  height: 100vh;
+  height: 100dvh; /* hauteur réelle sur mobile (barre d'adresse) */
+  overflow: hidden;
+}
+
+/* ============================ BARRE LATÉRALE ============================ */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  padding: 12px;
+  border-right: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.sidebar-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.me { display: flex; align-items: center; gap: 10px; min-width: 0; color: inherit; text-decoration: none; border-radius: var(--radius); }
+.me:hover strong { text-decoration: underline; }
+.sidebar-actions a.icon-btn { text-decoration: none; }
+
+.me > div { display: flex; flex-direction: column; min-width: 0; }
+.me strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sidebar-actions { display: flex; }
+
+.panel { display: flex; flex-direction: column; gap: 10px; min-height: 0; flex: 1; }
+
+.inline-form { display: flex; gap: 8px; }
+.inline-form input { flex: 1; min-width: 0; }
+
+/* ---------- Listes (salons, contacts, membres) ---------- */
+.list {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: var(--radius);
+  transition: background var(--transition);
+}
+.list-item:hover { background: var(--color-surface-2); }
+.list-item.is-active { background: color-mix(in srgb, var(--color-primary) 14%, transparent); }
+
+.list-item-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+  padding: 10px;
+  border: none;
+  background: none;
+  text-align: left;
+}
+.list-item-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.list-item-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.list-item-text strong,
+.preview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.has-unread .preview { color: var(--color-text); font-weight: 600; }
+
+.empty { padding: 24px 12px; text-align: center; font-size: 14px; list-style: none; }
+
+/* ============================ CONVERSATION ============================ */
+.chat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: var(--color-bg);
+}
+
+.chat-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 100%;
+  padding: 24px;
+  text-align: center;
+}
+
+.chat-view { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.chat-title { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.chat-title h2 { font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ---------- Liste des messages ---------- */
+.messages {
+  flex: 1;
+  min-height: 0;
+  padding: 16px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.messages.is-dragover { outline: 3px dashed var(--color-primary); outline-offset: -10px; }
+
+.load-more { display: flex; margin: 0 auto 12px; }
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.day-separator { display: flex; justify-content: center; margin: 16px 0 8px; }
+.day-separator span {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--color-surface-2);
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+.day-separator span::first-letter { text-transform: uppercase; }
+
+/* ---------- Un message ---------- */
+.message {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: min(78%, 560px);
+  margin-top: 10px;
+}
+.message.is-grouped { margin-top: 0; }
+.message.is-mine { align-self: flex-end; flex-direction: row-reverse; }
+.message .avatar { width: 32px; height: 32px; font-size: 13px; }
+.avatar-spacer { width: 32px; flex-shrink: 0; }
+
+.message-body { display: flex; flex-direction: column; min-width: 0; }
+.is-mine .message-body { align-items: flex-end; }
+
+.author { margin: 0 0 2px 12px; color: var(--color-muted); font-size: 12px; font-weight: 600; }
+
+.bubble {
+  position: relative;
+  padding: 8px 12px 6px;
+  border-radius: var(--radius-lg);
+  background: var(--color-bubble-theirs);
+  box-shadow: var(--shadow);
+  overflow-wrap: anywhere;
+}
+.is-theirs .bubble { border-bottom-left-radius: 6px; }
+.is-mine .bubble {
+  border-bottom-right-radius: 6px;
+  background: var(--color-bubble-mine);
+  color: var(--color-bubble-mine-text);
+}
+
+.bubble-text { white-space: pre-wrap; }
+
+.bubble-image { display: block; margin: -2px -6px 6px; }
+.bubble-image img {
+  max-height: 320px;
+  border-radius: calc(var(--radius-lg) - 6px);
+  object-fit: cover;
+  background: var(--color-surface-2);
+}
+
+/* Heure et coches en bas à droite de la bulle */
+.meta {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+  font-size: 11px;
+  opacity: 0.75;
+}
+.ticks { letter-spacing: -3px; font-weight: 700; }
+.ticks.is-read { color: var(--color-read); opacity: 1; }
+
+/* ---------- Réactions (fonctionnalité supplémentaire) ---------- */
+.reactions {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+.is-mine .reactions { justify-content: flex-end; }
+
+.reaction-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  font-size: 13px;
+  transition: transform var(--transition);
+}
+.reaction-chip:hover { transform: scale(1.08); }
+.reaction-chip span { font-size: 12px; font-weight: 600; }
+.reaction-chip.is-mine {
+  border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 14%, var(--color-surface));
+}
+
+/* Le bouton « ajouter une réaction » n'apparaît qu'au survol (sur ordinateur) */
+.reaction-add {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.message:hover .reaction-add,
+.reaction-add:focus-visible,
+.reactions.has-reactions .reaction-add { opacity: 1; }
+.reactions:not(.has-reactions) { height: 0; margin: 0; }
+.message:hover .reactions:not(.has-reactions) { height: auto; margin-top: 4px; }
+
+.reaction-picker {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  z-index: 20;
+  display: flex;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow);
+}
+.is-theirs .reaction-picker { left: 0; }
+.is-mine .reaction-picker { right: 0; }
+.reaction-picker button {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  font-size: 20px;
+  transition: transform var(--transition);
+}
+.reaction-picker button:hover { transform: scale(1.25); }
+
+/* ---------- Indicateur « en train d'écrire… » ---------- */
+.typing {
+  min-height: 22px;
+  padding: 0 20px;
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* ---------- Bouton « aller en bas » ---------- */
+.scroll-down {
+  position: absolute;
+  right: 20px;
+  bottom: 110px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-surface);
+  box-shadow: var(--shadow);
+  font-size: 18px;
+}
+
+/* ---------- Zone de saisie ---------- */
+.composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.composer textarea {
+  flex: 1;
+  min-height: 40px;
+  max-height: 150px;
+  border-radius: 20px;
+  resize: none;
+}
+.composer label.icon-btn { cursor: pointer; }
+.composer.is-uploading { opacity: 0.6; pointer-events: none; }
+.composer.is-uploading::before {
+  content: "Envoi de l'image…";
+  align-self: center;
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+/* ============================ BOÎTES DE DIALOGUE ============================ */
+.dialog {
+  width: min(92vw, 440px);
+  max-height: 85vh;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow);
+}
+.dialog::backdrop { background: rgb(0 0 0 / 45%); }
+.dialog h2 { margin-bottom: 16px; font-size: 20px; }
+.dialog .list { max-height: 40vh; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+
+.check-list { max-height: 35vh; margin: 0; padding: 0; overflow-y: auto; list-style: none; }
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.check-item:hover { background: var(--color-surface-2); }
+.check-item .avatar { width: 30px; height: 30px; font-size: 13px; }
+
+.add-member { display: flex; align-items: flex-end; gap: 8px; margin-top: 12px; }
+.add-member .field { flex: 1; margin: 0; }
+
+/* ============================ ADAPTABILITÉ (téléphone) ============================ */
+.only-mobile { display: none; }
+
+@media (max-width: 767px) {
+  .app { grid-template-columns: 1fr; }
+  .only-mobile { display: inline-flex; }
+
+  /* Par défaut : la liste ; quand un salon est ouvert : la conversation */
+  .chat { display: none; }
+  .app.show-chat .sidebar { display: none; }
+  .app.show-chat .chat { display: flex; }
+
+  .sidebar { border-right: none; }
+  .messages { padding: 12px 8px; }
+  .message { max-width: 88%; }
+  .chat-header { padding: 8px; gap: 8px; }
+  .composer .btn { padding: 8px 12px; }
+
+}
+
+/* Écran tactile (pas de survol) : toucher une bulle affiche le bouton de réaction */
+@media (hover: none) {
+  .message.is-selected .reaction-add { opacity: 1; }
+  .message.is-selected .reactions:not(.has-reactions) { height: auto; margin-top: 4px; }
+}
