@@ -1,0 +1,72 @@
+/* =====================================================================
+   auth.css — Formulaires de connexion et d'inscription
+   (connexion.html, inscription.html) et formulaires de profil.
+   ===================================================================== */
+
+.auth-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  background:
+    radial-gradient(circle at 15% 10%, color-mix(in srgb, var(--color-primary) 16%, transparent), transparent 40%),
+    radial-gradient(circle at 85% 90%, color-mix(in srgb, #8250df 12%, transparent), transparent 40%),
+    var(--color-bg);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 32px 28px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow);
+}
+
+.auth-header { margin-bottom: 24px; text-align: center; }
+.auth-logo { margin: 0 auto 8px; }
+.auth-header h1 { font-size: 26px; margin-bottom: 4px; }
+
+.auth-switch { margin-top: 18px; font-size: 14px; text-align: center; }
+.auth-switch a { color: var(--color-primary); font-weight: 600; }
+
+.form-message { min-height: 1.2em; margin-bottom: 12px; font-size: 14px; }
+.form-message.is-error { color: var(--color-danger); }
+.form-message.is-success { color: var(--color-success); }
+
+.field small { font-weight: 400; }
+.password-field { position: relative; }
+.password-field input { padding-right: 44px; }
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  width: 36px;
+  height: 36px;
+  transform: translateY(-50%);
+  border: none;
+  border-radius: 50%;
+  background: none;
+}
+
+/* Sélecteur de couleur de l'avatar : pastilles rondes */
+.colors { display: flex; flex-wrap: wrap; gap: 10px; }
+.colors label { position: relative; cursor: pointer; }
+.colors input { position: absolute; opacity: 0; }
+.colors span {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--color-border);
+  transition: transform var(--transition);
+}
+.colors input:checked + span { border-color: var(--color-surface); box-shadow: 0 0 0 2px var(--color-text); transform: scale(1.1); }
+.colors input:focus-visible + span { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+@media (max-width: 480px) {
+  .auth-card { padding: 24px 18px; }
+}
