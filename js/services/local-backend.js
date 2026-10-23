@@ -23,8 +23,8 @@
 const DB_KEY = 'babil:db';
 const SESSION_KEY = 'babil:session';
 const PRESENCE_TIMEOUT_MS = 12_000;
-const PRESENCE_BEAT_MS = 4_000;
-const ALLOWED_EMOJIS = ['👍', '❤️', '😂', '😮', '😢', '🎉'];
+const PRESENCE_BEAT_MS = 4_000;.32.
+const ALLOWED_EMOJIS = ['👍', '❤️', '😂', '😮', '😢', '🎉'];0
 
 /* ================================================================== */
 /* Utilitaires                                                         */
