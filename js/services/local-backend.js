@@ -22,9 +22,9 @@
 
 const DB_KEY = 'babil:db';
 const SESSION_KEY = 'babil:session';
-const PRESENCE_TIMEOUT_MS = 12_000;
-const PRESENCE_BEAT_MS = 4_000;.32.
-const ALLOWED_EMOJIS = ['👍', '❤️', '😂', '😮', '😢', '🎉'];0
+const PRESENCE_TIMEOUT_MS = 12000;
+const PRESENCE_BEAT_MS = 4000;
+const ALLOWED_EMOJIS = ['👍', '❤️', '😂', '😮', '😢', '🎉'];
 
 /* ================================================================== */
 /* Utilitaires                                                         */
@@ -116,8 +116,6 @@ function deliver(event) {
 }
 
 if (bus) bus.onmessage = (message) => deliver(message.data);
-
-// Les écritures faites dans un autre onglet sans BroadcastChannel restent visibles au rechargement.
 
 /** Émet un changement de table (équivalent de postgres_changes). */
 function publishChange(table, eventType, row, old = null) {
@@ -639,7 +637,7 @@ function readAsDataUrl(file) {
 /** Réduit l'image (1024 px max, JPEG) pour ménager le localStorage (~5 Mo). */
 async function compressImage(file) {
   const original = await readAsDataUrl(file);
-  if (file.type === 'image/gif' && file.size < 600_000) return original; // conserve l'animation
+  if (file.type === 'image/gif' && file.size < 600000) return original; // conserve l'animation
   const img = new Image();
   img.src = original;
   await img.decode();
