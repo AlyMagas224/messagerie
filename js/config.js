@@ -10,8 +10,8 @@
  * GitHub Pages. La sécurité des données est assurée par les politiques RLS
  * définies dans supabase/schema.sql. Ne JAMAIS mettre la clé « service_role » ici.
  */
-export const SUPABASE_URL = 'https://VOTRE-PROJET.supabase.co';
-export const SUPABASE_ANON_KEY = 'VOTRE-CLE-ANON-PUBLIQUE';
+export const SUPABASE_URL = 'https://exwkstzualrazflxybhy.supabase.co';
+export const SUPABASE_ANON_KEY = 'sb_publishable_KmUjI8Y2XJXbmC4jZOAC9Q_7rb0ps7h';
 
 /** Nom du bucket de stockage des images (doit correspondre à schema.sql). */
 export const IMAGE_BUCKET = 'chat-images';
