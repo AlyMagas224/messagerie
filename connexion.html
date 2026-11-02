@@ -10,9 +10,16 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/pages.css">
   <link rel="stylesheet" href="css/auth.css">
+  <!-- Mémorise les paramètres du lien de réinitialisation (reçu par courriel)
+       avant que Supabase ne les efface de l'adresse de la page -->
+  <script>window.AUTH_REDIRECT_PARAMS = window.location.search.slice(1) + '&' + window.location.hash.slice(1);</script>
 </head>
 <!--
-  connexion.html — Page de connexion.
+  connexion.html — Page de connexion, avec la réinitialisation du mot de passe :
+    1. formulaire de connexion ;
+    2. « Mot de passe oublié » : envoi d'un lien par courriel ;
+    3. « Nouveau mot de passe » : affiché quand on ouvre le lien reçu par courriel.
+  Un seul formulaire est visible à la fois (géré par js/pages/connexion.js).
 -->
 <body class="site-page">
 
@@ -34,10 +41,11 @@
     <section class="auth-card">
       <header class="auth-header">
         <img src="assets/favicon.svg" alt="" class="auth-logo" width="56" height="56">
-        <h1>Connexion</h1>
-        <p class="muted">Heureux de vous revoir !</p>
+        <h1 id="auth-title">Connexion</h1>
+        <p class="muted" id="auth-subtitle">Heureux de vous revoir !</p>
       </header>
 
+      <!-- 1. Connexion -->
       <form id="login-form" novalidate>
         <label class="field">
           <span>Adresse courriel</span>
@@ -52,6 +60,35 @@
         </label>
         <p class="form-message" aria-live="polite"></p>
         <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+        <p class="auth-switch"><a href="#" data-view="forgot">Mot de passe oublié ?</a></p>
+      </form>
+
+      <!-- 2. Mot de passe oublié : demande d'un lien par courriel -->
+      <form id="forgot-form" novalidate hidden>
+        <label class="field">
+          <span>Adresse courriel du compte</span>
+          <input type="email" name="email" autocomplete="email" required>
+        </label>
+        <p class="form-message" aria-live="polite"></p>
+        <button type="submit" class="btn btn-primary btn-block">Envoyer le lien</button>
+        <p class="auth-switch"><a href="#" data-view="login">← Retour à la connexion</a></p>
+      </form>
+
+      <!-- 3. Nouveau mot de passe (après avoir cliqué sur le lien du courriel) -->
+      <form id="reset-form" novalidate hidden>
+        <label class="field">
+          <span>Nouveau mot de passe <small class="muted">(6 caractères minimum)</small></span>
+          <span class="password-field">
+            <input type="password" name="password" autocomplete="new-password" required minlength="6">
+            <button type="button" class="password-toggle" aria-label="Afficher le mot de passe">👁</button>
+          </span>
+        </label>
+        <label class="field">
+          <span>Confirmer le mot de passe</span>
+          <input type="password" name="confirm" autocomplete="new-password" required minlength="6">
+        </label>
+        <p class="form-message" aria-live="polite"></p>
+        <button type="submit" class="btn btn-primary btn-block">Enregistrer le mot de passe</button>
       </form>
 
       <p class="auth-switch muted">Pas encore de compte ? <a href="inscription.html">Créer un compte</a></p>
