@@ -22,6 +22,7 @@ enregistrées dans **Supabase**.
 | Liste des salons | Conversations privées et salons de groupe, triés par activité, avec compteur de non-lus |
 | Messages en temps réel | Réception instantanée, sans rechargement de la page |
 | Affichage horodaté | Heure de chaque message, séparateurs « Aujourd'hui / Hier / date » |
+| Mot de passe oublié | Lien de réinitialisation envoyé par courriel |
 
 ### Fonctionnalités secondaires
 
