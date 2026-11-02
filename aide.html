@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Guide d'utilisation de la messagerie Babil.">
+  <meta name="description" content="Guide d'utilisation et questions fréquentes de la messagerie Babil.">
   <meta name="theme-color" content="#4f7cff">
   <title>Aide — Babil</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/pages.css">
 </head>
 <!--
-  aide.html — Page d'aide : guide d'utilisation, configuration de Supabase, FAQ et à propos.
+  aide.html — Page d'aide : guide d'utilisation, indicateurs, questions fréquentes et à propos.
 -->
 <body class="site-page">
 
@@ -32,102 +32,124 @@
   <main class="container">
     <header class="page-header">
       <h1>Aide</h1>
-      <p class="muted">Tout ce qu'il faut savoir pour utiliser et configurer Babil.</p>
+      <p class="muted">Tout ce qu'il faut savoir pour bien utiliser Babil.</p>
     </header>
 
     <div class="content">
+      <!-- Sommaire : liens vers les sections de la page -->
       <nav class="toc" aria-label="Sommaire">
         <a href="#demarrer">Démarrer</a>
         <a href="#utiliser">Utiliser la messagerie</a>
         <a href="#indicateurs">Indicateurs</a>
-        <a href="#supabase">Mode démo et Supabase</a>
         <a href="#faq">Questions fréquentes</a>
         <a href="#apropos">À propos</a>
       </nav>
 
       <article class="prose">
+        <!-- Premiers pas -->
         <section id="demarrer">
           <h2>Démarrer</h2>
           <ol>
             <li><a href="inscription.html">Créez un compte</a> : pseudo, courriel, mot de passe et couleur d'avatar.</li>
             <li>Vous arrivez dans la messagerie. Dans l'onglet <strong>Salons</strong>, tapez le pseudo d'une autre personne inscrite dans le champ <strong>« Écrire à… »</strong> puis cliquez sur <strong>Écrire</strong> : la conversation privée s'ouvre et la personne est ajoutée à vos contacts.</li>
-            <li>Pour discuter à plusieurs, cliquez sur <strong>＋ Nouveau salon de groupe</strong>, donnez un nom et cochez au moins un contact.</li>
+            <li>Pour discuter à plusieurs, cliquez sur <strong>＋ Nouveau salon de groupe</strong>, donnez un nom au salon et cochez au moins un contact.</li>
           </ol>
         </section>
 
+        <!-- Guide des fonctions de la messagerie -->
         <section id="utiliser">
           <h2>Utiliser la messagerie</h2>
           <ul>
-            <li><strong>Envoyer un message :</strong> touche <code>Entrée</code> ou bouton <em>Envoyer</em> (<code>Maj + Entrée</code> pour aller à la ligne).</li>
-            <li><strong>Envoyer une image :</strong> bouton 📎, copier-coller (<code>Ctrl + V</code>) ou glisser-déposer dans la conversation (PNG, JPEG, GIF, WEBP, 5 Mo maximum).</li>
-            <li><strong>Réagir :</strong> survolez un message (ou touchez-le sur téléphone) puis cliquez sur ☺ et choisissez un emoji. Cliquez à nouveau sur une réaction pour la retirer.</li>
+            <li><strong>Envoyer un message :</strong> touche <code>Entrée</code> ou bouton <em>Envoyer</em> (<code>Maj</code> + <code>Entrée</code> pour aller à la ligne).</li>
+            <li><strong>Envoyer une image :</strong> bouton 📎, copier-coller (<code>Ctrl</code> + <code>V</code>) ou glisser-déposer dans la conversation.</li>
+            <li><strong>Réagir à un message :</strong> survolez le message (ou touchez-le sur téléphone), cliquez sur ☺ et choisissez un emoji. Cliquez de nouveau sur votre réaction pour la retirer.</li>
             <li><strong>Membres d'un salon :</strong> bouton 👥 en haut de la conversation pour voir les membres, en ajouter ou quitter le salon.</li>
-            <li><strong>Notifications :</strong> bouton 🔔 / 🔕 pour activer ou couper le son. Autorisez les notifications du navigateur pour être prévenu quand l'onglet est en arrière-plan.</li>
-            <li><strong>Profil :</strong> page <a href="profil.html">Mon profil</a> pour changer de pseudo, de couleur ou de mot de passe.</li>
+            <li><strong>Notifications :</strong> bouton 🔔 / 🔕 pour activer ou couper le son.</li>
+            <li><strong>Profil :</strong> page <a href="profil.html">Mon profil</a> pour changer de pseudo, de couleur ou de mot de passe, et pour vous déconnecter.</li>
           </ul>
         </section>
 
+        <!-- Signification des indicateurs affichés dans la messagerie -->
         <section id="indicateurs">
           <h2>Indicateurs</h2>
           <table>
             <thead><tr><th>Indicateur</th><th>Signification</th></tr></thead>
             <tbody>
-              <tr><td>🟢 pastille verte</td><td>La personne est en ligne. Sinon : « vu à 14 h 05 ».</td></tr>
-              <tr><td><em>… est en train d'écrire…</em></td><td>Quelqu'un tape un message dans le salon ouvert.</td></tr>
-              <tr><td>✓</td><td>Message envoyé et enregistré.</td></tr>
+              <tr><td>🟢 pastille verte</td><td>La personne est en ligne. Sinon, l'heure de sa dernière connexion est affichée (« vu à 14 h 05 »).</td></tr>
+              <tr><td><em>… est en train d'écrire…</em></td><td>Quelqu'un tape un message dans la conversation ouverte.</td></tr>
+              <tr><td>✓</td><td>Message envoyé.</td></tr>
               <tr><td>✓✓</td><td>Message reçu par tous les destinataires.</td></tr>
               <tr><td>✓✓ en couleur</td><td>Message lu par tous les destinataires.</td></tr>
-              <tr><td>Pastille bleue (nombre)</td><td>Nombre de messages non lus dans le salon.</td></tr>
+              <tr><td>Pastille bleue (nombre)</td><td>Nombre de messages non lus dans la conversation.</td></tr>
             </tbody>
           </table>
         </section>
 
-        <section id="supabase">
-          <h2>Mode démo et Supabase</h2>
-          <p>Babil fonctionne de deux façons, choisies automatiquement selon le fichier <code>js/config.js</code> :</p>
-          <h3>Mode démo (par défaut)</h3>
-          <p>Si <code>js/config.js</code> n'est pas rempli, les comptes et messages sont enregistrés <strong>dans votre navigateur</strong>.
-            Tout fonctionne (inscription, salons, temps réel, images…), mais uniquement entre les onglets de ce navigateur.
-            Pour tester une conversation, ouvrez un <strong>deuxième onglet</strong>, inscrivez-y un autre compte, et discutez d'un onglet à l'autre.</p>
-          <h3>Mode Supabase (messagerie entre plusieurs appareils)</h3>
-          <ol>
-            <li>Créez un projet gratuit sur <a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a>.</li>
-            <li>Dans <strong>SQL Editor</strong>, exécutez tout le fichier <code>supabase/schema.sql</code>.</li>
-            <li>Dans <strong>Authentication → Sign In / Providers → Email</strong>, désactivez <em>Confirm email</em> (pour les tests).</li>
-            <li>Dans <strong>Authentication → URL Configuration</strong>, ajoutez l'adresse du site (GitHub Pages).</li>
-            <li>Dans <strong>Project Settings → API</strong>, copiez l'URL du projet et la clé <em>anon public</em> dans <code>js/config.js</code>.</li>
-          </ol>
-          <p>La note « Mode démo » de la messagerie disparaît alors, et tous les utilisateurs du site partagent la même base de données.</p>
-        </section>
-
+        <!-- Questions fréquentes des utilisateurs -->
         <section id="faq">
           <h2>Questions fréquentes</h2>
+
           <details>
-            <summary>Mon ami ne voit pas mon compte quand il ajoute mon pseudo.</summary>
-            <p>En mode démo, les comptes n'existent que dans votre navigateur. Configurez Supabase pour que tout le monde partage les mêmes comptes.</p>
+            <summary>Babil est-il gratuit ?</summary>
+            <p>Oui. Il suffit de créer un compte avec une adresse courriel pour utiliser toutes les fonctionnalités.</p>
           </details>
+
           <details>
-            <summary>« Impossible de joindre le serveur » lors de la connexion.</summary>
-            <p>L'URL ou la clé de <code>js/config.js</code> est incorrecte, ou le projet Supabase est en pause. Vérifiez-les dans Project Settings → API.</p>
+            <summary>Quelles sont les règles pour le pseudo et le mot de passe ?</summary>
+            <p>Le pseudo doit contenir de 3 à 20 caractères : lettres sans accent, chiffres ou tiret bas (<code>_</code>). Il doit être unique. Le mot de passe doit contenir au moins 6 caractères.</p>
           </details>
+
           <details>
-            <summary>L'inscription indique « Confirmez votre adresse ».</summary>
-            <p>La confirmation par courriel est activée dans Supabase. Cliquez sur le lien reçu, ou désactivez <em>Confirm email</em> dans Authentication.</p>
+            <summary>Comment trouver un ami sur Babil ?</summary>
+            <p>Demandez-lui son pseudo exact, puis tapez-le dans le champ <strong>« Écrire à… »</strong> (onglet Salons) ou dans <strong>« Ajouter un contact »</strong> (onglet Contacts). Votre ami doit déjà avoir créé son compte.</p>
           </details>
+
           <details>
-            <summary>Je n'entends pas le son des notifications.</summary>
-            <p>Le navigateur n'autorise le son qu'après un premier clic dans la page. Vérifiez aussi que le bouton affiche 🔔 et non 🔕.</p>
+            <summary>Puis-je utiliser Babil sur mon téléphone ?</summary>
+            <p>Oui. Ouvrez simplement l'adresse du site dans le navigateur de votre téléphone : l'affichage s'adapte à la taille de l'écran. Vos conversations sont les mêmes sur tous vos appareils.</p>
           </details>
+
           <details>
-            <summary>Le site ne s'affiche pas quand j'ouvre le fichier index.html directement.</summary>
-            <p>Les modules JavaScript exigent un serveur : utilisez l'extension Live Server de VS Code, <code>python -m http.server</code>, ou GitHub Pages.</p>
+            <summary>Qui peut lire mes messages ?</summary>
+            <p>Seuls les membres de la conversation. Une personne qui n'est pas membre d'un salon ne peut ni voir ses messages ni y écrire.</p>
+          </details>
+
+          <details>
+            <summary>Quelles images puis-je envoyer ?</summary>
+            <p>Les formats PNG, JPEG, GIF et WEBP, jusqu'à 5 Mo par image. Cliquez sur une image pour l'ouvrir en grand dans un nouvel onglet.</p>
+          </details>
+
+          <details>
+            <summary>Comment quitter un salon de groupe ?</summary>
+            <p>Ouvrez le salon, cliquez sur 👥 en haut de la conversation, puis sur <strong>Quitter le salon</strong>. Vous ne recevrez plus ses messages.</p>
+          </details>
+
+          <details>
+            <summary>Comment retirer quelqu'un de mes contacts ?</summary>
+            <p>Dans l'onglet <strong>Contacts</strong>, cliquez sur le ✕ à droite du contact. Les conversations déjà existantes ne sont pas supprimées.</p>
+          </details>
+
+          <details>
+            <summary>Puis-je changer mon pseudo ?</summary>
+            <p>Oui, dans <a href="profil.html">Mon profil</a>, à condition que le nouveau pseudo ne soit pas déjà utilisé.</p>
+          </details>
+
+          <details>
+            <summary>Je ne reçois pas de notification quand un message arrive.</summary>
+            <p>Vérifiez que le bouton affiche 🔔 et non 🔕. Le navigateur n'autorise le son qu'après un premier clic dans la page, et il faut accepter l'affichage des notifications lorsqu'il le demande.</p>
+          </details>
+
+          <details>
+            <summary>Je n'arrive pas à me connecter.</summary>
+            <p>Vérifiez l'adresse courriel et le mot de passe (attention aux majuscules). Si vous n'avez pas encore de compte, <a href="inscription.html">inscrivez-vous</a>.</p>
           </details>
         </section>
 
+        <!-- Présentation du projet -->
         <section id="apropos">
           <h2>À propos</h2>
-          <p>Babil a été réalisé dans le cadre du Projet Fil-Rouge du cours <strong>8WEB101 — Conception et programmation de sites Web</strong> (UQAC).
-            Il est construit en HTML, CSS et JavaScript sans framework, avec Supabase pour les données et GitHub Pages pour l'hébergement.</p>
+          <p>Babil a été réalisé dans le cadre du Projet Fil-Rouge du cours <strong>8WEB101 — Conception et programmation de sites Web</strong> (UQAC)
+            par <strong>Aly Magassouba</strong> et <strong>Mamadou Saliou Conde</strong>.</p>
           <p>Fonctionnalité supplémentaire choisie par l'équipe : <strong>les réactions emoji</strong> sur les messages.</p>
         </section>
       </article>
@@ -144,7 +166,8 @@
     </nav>
     <p>© <span data-year></span> Babil — Projet Fil-Rouge 8WEB101 — UQAC</p>
   </footer>
-  
-<script type="module" src="js/pages/aide.js"></script>
+
+  <!-- Script commun : menu mobile, année du pied de page, boutons selon la connexion -->
+  <script type="module" src="js/pages/site.js"></script>
 </body>
 </html>
