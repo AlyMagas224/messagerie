@@ -67,7 +67,7 @@
         </form>
         <ul id="contact-list" class="list" aria-label="Contacts"></ul>
         <p id="contacts-empty" class="empty muted" hidden>
-          Aucun contact. Ajoutez quelqu'un grâce à son pseudo.
+          Aucun contact. Ajoutez quelqu'un grâce à son nom.
         </p>
       </section>
     </aside>
@@ -79,7 +79,7 @@
       <div id="chat-placeholder" class="chat-placeholder">
         <img src="assets/favicon.svg" alt="" width="72" height="72">
         <h2>Bienvenue sur Babil</h2>
-        <p class="muted">Sélectionnez un salon ou un contact pour commencer à discuter.</p>
+        <p class="muted">Sélectionnez un groupe ou un contact pour commencer à discuter.</p>
       </div>
 
       <div id="chat-view" class="chat-view" hidden>
@@ -121,9 +121,9 @@
   <!-- Création d'un salon de groupe -->
   <dialog id="dialog-new-room" class="dialog">
     <form method="dialog" id="new-room-form">
-      <h2>Nouveau salon</h2>
+      <h2>Nouveau groupe</h2>
       <label class="field">
-        <span>Nom du salon</span>
+        <span>Nom du groupe</span>
         <input type="text" name="name" required maxlength="50" placeholder="ex. Équipe projet">
       </label>
       <fieldset class="field">
@@ -150,7 +150,7 @@
         <button type="button" id="btn-add-member" class="btn btn-primary">Ajouter</button>
       </div>
       <div class="dialog-actions">
-        <button type="button" id="btn-leave-room" class="btn btn-danger">Quitter le salon</button>
+        <button type="button" id="btn-leave-room" class="btn btn-danger">Quitter le groupe</button>
         <button type="button" class="btn btn-ghost" data-close>Fermer</button>
       </div>
     </form>
