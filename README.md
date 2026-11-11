@@ -4,7 +4,7 @@
 > Projet Fil-Rouge — **8WEB101 Conception et programmation de sites Web** — UQAC  
 > Équipe : **Aly Magassouba** · **Mamadou Saliou Conde**
 
-🔗 **Site en ligne :** https://alymagas224.github.io/messagerie/
+ **Site en ligne :** https://alymagas224.github.io/messagerie/
 
 Babil est une messagerie instantanée Web qui permet d'échanger des messages texte et des images
 en temps réel, en conversation privée ou dans des salons de groupe. Le site est réalisé en HTML,
@@ -34,7 +34,7 @@ enregistrées dans **Supabase**.
 | « en train d'écrire… » | Affiché en direct sous la conversation |
 | « envoyé / reçu / lu » | ✓ envoyé · ✓✓ reçu · ✓✓ coloré lu |
 
-### ⭐ Fonctionnalité supplémentaire : réactions emoji
+### Fonctionnalité supplémentaire : réactions emoji
 
 Chaque message peut recevoir des réactions (👍 ❤️ 😂 😮 😢 🎉). Les réactions s'affichent sous le
 message avec leur nombre ; le survol d'une réaction indique qui a réagi, et un nouveau clic sur sa
